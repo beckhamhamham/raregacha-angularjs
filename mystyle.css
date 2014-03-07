@@ -1,0 +1,21 @@
+
+body {
+	font-family: Calibri;
+}
+
+#footer {
+    color: white;
+}
+
+#gacha-logo {
+    color: black;
+}
+
+#gacha-poweredby {
+    color: black;
+}
+
+#gacha-nav-brand {
+    color: white;
+    font-size: 15pt;
+}
