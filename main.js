@@ -1,46 +1,36 @@
 
 var mainCtrl = function($scope) {
 
+	//setup
 	$scope.gacha_xtimes = 1;
+	$scope.monsters = monsters;
+	set_all_hidden(".monster_view_default");	
+
 	console.log("gacha!" + $scope.gacha_xtimes);
 	$scope.gacha = function(){
 		console.log("gacha!-----" + $scope.gacha_xtimes);
 	}
 
+	function set_all_hidden(target){
+		$(".monster_view_default").removeClass("monster_view_active");
+		$(".monster_view_gacha").removeClass("monster_view_active");
+		$(".monster_view_roulette").removeClass("monster_view_active");
+		$(".monster_view_search").removeClass("monster_view_active");
+		$(target).addClass("monster_view_active");
+	}
+
 	$scope.gacha_nav = function(){
-
-		$("#monster_view").empty();		
-
-		//add how many?<select>dropdown_menu
-		var i=1;
-		var option_tag = "";
-		do {
-			option_tag = option_tag + "<option value=\"" + i + "\">" + i + "</option>"
-			i++;
-		} while (i<6);	
-		var select_tag = "<select ng-model=\"gacha_xtimes\">";
-		$("#monster_view").append("how many?" + select_tag + option_tag + "</select>");
-		$("#monster_view").append($scope.gacha_xtimes);
-
-		// add gacha<button>
-		// $("#monster_view").append("<button ng-click=\"gacha()\" id=\"gacha_button\">gacha</button>");
-
-		//$("#monster_view").append("<button ng-click=\"gacha()\" id=\"gacha_button\">gacha</button>");
-		// button.$apply();
+		set_all_hidden(".monster_view_gacha");	
 		console.log("gacha_nav");
-		$compile("<button ng-click=\"gacha()\" id=\"gacha_button\">gacha</button>")($scope).appendTo("#monster_view");
-
 	}
 
 	$scope.roulette_nav = function(){
-		$("#monster_view").empty();
-		$("#monster_view").append("under construction");
+		set_all_hidden(".monster_view_roulette");	
 		console.log("roulette_nav");
 	}
 
 	$scope.search_nav = function(){
-		$("#monster_view").empty();
-		$("#monster_view").append("under construction");
+		set_all_hidden(".monster_view_search");	
 		console.log("search_nav");
 	}
 

@@ -53,15 +53,44 @@
 
 	<!-- View start -->
     <div class="container" id="monster_view">
-<!-- 		ガチャ回数
-		<select ng-model="gacha_xtimes">
-			<option value=1>1</option>
-			<option value=2>2</option>
-			<option value=3>3</option>
-			<option value=4>4</option>
-			<option value=5>5</option>
-		</select>
-		<button ng-click="gacha()" id="gacha_button">まわす</button> -->
+		<div class="monster_view_default monster_view_active">
+			welcome
+		</div>
+		<div class="monster_view_gacha">
+			<p>monster_view_gacha</p>
+			<span class="under_construction">under construction</span>
+		</div>
+		<div class="monster_view_roulette">
+			<p>monster_view_roulette</p>
+			<span class="under_construction">under construction</span>
+		</div>
+		<div class="monster_view_search">
+			<p>monster_view_search</p>
+			<span>
+				name:
+				<input type="text" ng-model="monster_query.name" placeholder="type monster name">
+			</span>
+			<span>
+				rare:
+				<select ng-model="monster_query.rare">
+					<option value="">all</option>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+					<option value="6">6</option>
+					<option value="7">7</option>
+					<option value="8">8</option>
+				</select>
+			</span>
+			<ul>
+			   <li ng-repeat="monster in monsters|filter:monster_query">
+			     <span><a href="{{monster.url}}" target="_brank"><img src="{{monster.img}}" class="monster_img"></a></span>
+			     <span class="monster_profile">{{monster.id}}, {{monster.name}}, {{monster.rare}}</span>
+			  </li>
+			</ul>
+		</div>
     </div> 
 	<!-- View end -->
 

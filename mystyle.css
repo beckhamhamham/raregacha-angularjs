@@ -19,3 +19,56 @@ body {
     color: white;
     font-size: 15pt;
 }
+
+#monster_view {
+    position: relative;
+}
+
+.monster_view_default {
+    position: absolute;
+    visibility: hidden;
+}
+
+.monster_view_gacha {
+    position: absolute;
+    visibility: hidden;
+}
+
+.monster_view_roulette {
+    position: absolute;
+    visibility: hidden;
+}
+
+.monster_view_search {
+    position: absolute;   
+    visibility: hidden;
+}
+
+.monster_view_search input{
+    width: 150px;
+    margin-bottom: 10px;
+}
+
+.monster_view_active {
+    visibility: visible;
+}
+
+.monster_img {
+    width: 50px;
+}
+
+.under_construction {
+    color: red;
+}
+/*
+.monster_profile {
+    visibility: hidden;
+}
+
+li .monster_profile{
+    visibility: hidden;
+}
+
+li:hover .monster_profile {
+    visibility: visible;
+}*/
