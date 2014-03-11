@@ -60,6 +60,21 @@ body {
 .under_construction {
     color: red;
 }
+
+.monster_footer {
+    color: white;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+}
+
+
+.monster_footer .monster_logo img {
+     width: 18px;
+    height: 18px;
+}
+
+
 /*
 .monster_profile {
     visibility: hidden;
