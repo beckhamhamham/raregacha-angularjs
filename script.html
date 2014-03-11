@@ -3,67 +3,99 @@
 <!DOCTYPE html>
 <html lang="ja" ng-app>
 
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>raregacha</title>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>raregacha</title>
 	<link rel="shortcut icon" href="favicon.ico">
-    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="bootstrap/css/bootstrap.sticky-footer.css" rel="stylesheet">
+	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="bootstrap/css/bootstrap.sticky-footer.css" rel="stylesheet">
 
 	<link rel="stylesheet" href="mystyle.css">
 
-	  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular.min.js"></script>
-	<script src="db/monsters.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular.min.js"></script>
+	<script src="db/monsters200.js"></script>
 	<script src="main.js"></script>
-  </head>
+</head>
 
-  <body ng-controller="mainCtrl">
+<body ng-controller="mainCtrl">
 
-  	<!-- Header start -->
-  	<div id="header">	
+	<!-- Header start -->
+	<div id="header">	
 		<div class="logo">
-				<img src="img/raregacha_logo.png" width="50px" height="50px">
-				<span id="gacha-poweredby">powered by</span>
-				<img src="img/AngularJS-small.png" height="20px" align="bottom">	
+			<img src="img/raregacha_logo.png" width="50px" height="50px">
+			<span id="gacha-poweredby">powered by</span>
+			<img src="img/AngularJS-small.png" height="20px" align="bottom">	
 		</div>		
 		<nav class="navbar navbar-inverse">
-		  <div class="container">
-		  	<div class="navbar-header">
-		  	  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-		  	    <span class="sr-only">Toggle navigation</span>
-		  	    <span class="icon-bar"></span>
-		  	    <span class="icon-bar"></span>
-		  	    <span class="icon-bar"></span>
-		  	  </button>
-		  	  <span class="navbar-brand" href="#" id="gacha-nav-brand">raregacha</span>
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<span class="navbar-brand" href="#" id="gacha-nav-brand">raregacha</span>
+				</div>
+				<div class="collapse navbar-collapse">
+					<ul class="nav navbar-nav">
+						<li id="monster_gacha"><a href="#" ng-click="gacha_nav()">gacha</a></li>
+						<li id="monster_roulette"><a href="#" ng-click="roulette_nav()">roulette</a></li>
+						<li id="monster-search"><a href="#" ng-click="search_nav()">search</a></li>
+					</ul>
+				</div>
 			</div>
-		  	<div class="collapse navbar-collapse">
-		  		<ul class="nav navbar-nav">
-				<li id="monster_gacha"><a href="#" ng-click="gacha_nav()">gacha</a></li>
-				<li id="monster_roulette"><a href="#" ng-click="roulette_nav()">roulette</a></li>
-				<li id="monster-search"><a href="#" ng-click="search_nav()">search</a></li>
-				</ul>
-			</div>
-		  </div>
 		</nav>
 	</div> 
 	<!-- Header end -->
 
 	<!-- View start -->
-    <div class="container" id="monster_view">
+	<div class="container" id="monster_view">
 		<div class="monster_view_default monster_view_active">
 			welcome
 		</div>
 		<div class="monster_view_gacha">
 			<p>monster_view_gacha</p>
-			<span class="under_construction">under construction</span>
+			<span class="under_construction"><p>F5せずに何回もやると、バグります。</p></span>
+			<span>
+				<button ng-click="gacha()">go!</button>
+			</span>
+			<span>
+				how many?:
+				<select ng-model="gacha_xtimes">
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+					<option value="6">6</option>
+					<option value="7">7</option>
+					<option value="8">8</option>
+					<option value="9">9</option>
+					<option value="10">10</option>
+				</select>
+			</span>
+			<ul id="monster_gacha_result">
+				<li ng-repeat="monster_gacha_hit in monsters_gacha_hit|limitTo: gacha_xtimes track by $index" class="monster_gacha_raw">
+					<div>
+						<a href="{{monster_gacha_hit.url}}" target="_brank"><img src="{{monster_gacha_hit.img}}" class="monster_gacha_img"></a>
+						<span class="monster_gacha_profile">{{monster_gacha_hit.id}}, {{monster_gacha_hit.name}}, {{monster_gacha_hit.rare}}</span>
+						<img src="{{monster_gacha_hit.egg}}" ng-click="open_egg()" class="monster_gacha_egg">
+					</div>
+				</li>
+			</ul>
+			<!-- <pre>{{monsters_gacha_hit|json}}</pre> -->
 		</div>
+
+		<!-- roulette -->
 		<div class="monster_view_roulette">
 			<p>monster_view_roulette</p>
-			<span class="under_construction">under construction</span>
+			<span class="under_construction"><p>under construction</p></span>
 		</div>
+
+		<!-- search -->
 		<div class="monster_view_search">
 			<p>monster_view_search</p>
 			<span>
@@ -85,13 +117,13 @@
 				</select>
 			</span>
 			<ul>
-			   <li ng-repeat="monster in monsters|filter:monster_query">
-			     <span><a href="{{monster.url}}" target="_brank"><img src="{{monster.img}}" class="monster_img"></a></span>
-			     <span class="monster_profile">{{monster.id}}, {{monster.name}}, {{monster.rare}}</span>
-			  </li>
+				<li ng-repeat="monster in monsters|filter:monster_query">
+					<span><a href="{{monster.url}}" target="_brank"><img src="{{monster.img}}" class="monster_img"></a></span>
+					<span class="monster_profile">{{monster.id}}, {{monster.name}}, {{monster.rare}}</span>
+				</li>
 			</ul>
 		</div>
-    </div> 
+	</div> 
 	<!-- View end -->
 
 	<!-- Footer start -->
@@ -106,9 +138,9 @@
 	<!-- Footer end -->
 
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="bootstrap/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script src="bootstrap/js/bootstrap.min.js"></script>
 
-  </body>
+</body>
 </html>
 

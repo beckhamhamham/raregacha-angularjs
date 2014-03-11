@@ -22,26 +22,30 @@ body {
 
 #monster_view {
     position: relative;
+    margin-bottom: 100px;
 }
 
 .monster_view_default {
     position: absolute;
-    visibility: hidden;
+    display: none;
 }
 
 .monster_view_gacha {
     position: absolute;
-    visibility: hidden;
+    display: none;
+    margin-bottom: 100px;
 }
 
 .monster_view_roulette {
     position: absolute;
-    visibility: hidden;
+    display: none;
+    margin-bottom: 100px;
 }
 
 .monster_view_search {
     position: absolute;   
-    visibility: hidden;
+    display: none;
+    margin-bottom: 100px;
 }
 
 .monster_view_search input{
@@ -50,7 +54,27 @@ body {
 }
 
 .monster_view_active {
+    display: block;
+}
+
+.monster_view_inactive {
+    display: none;
+}
+
+.monster_view_visible {
     visibility: visible;
+}
+
+.monster_view_hidden {
+    visibility: hidden;
+}
+
+.monster_view_gacha button{
+    margin-bottom: 10px;
+}
+
+ul{
+    list-style: none;
 }
 
 .monster_img {
@@ -64,26 +88,135 @@ body {
 .monster_footer {
     color: white;
     width: 100%;
-    position: absolute;
+    position: fixed;
     bottom: 0;
+    left: 0;
 }
-
 
 .monster_footer .monster_logo img {
      width: 18px;
     height: 18px;
 }
 
+.monster_gacha_raw img{
+    height: 50px;
+}
+
+.monster_gacha_raw{
+    position: relative;
+}
+
+.monster_gacha_img{
+    width: 50px;
+    z-index: 1;
+}
+
+.monster_gacha_egg {
+    width: 50px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 0;
+}
 
 /*
 .monster_profile {
-    visibility: hidden;
+    visibility: collapse;
 }
 
 li .monster_profile{
-    visibility: hidden;
+    visibility: collapse;
 }
 
 li:hover .monster_profile {
     visibility: visible;
 }*/
+
+.animated{
+    
+-webkit-animation-fill-mode:both;
+-moz-animation-fill-mode:both;
+-ms-animation-fill-mode:both;
+-o-animation-fill-mode:both;
+animation-fill-mode:both;
+-webkit-animation-duration:3s;
+-moz-animation-duration:3s;
+-ms-animation-duration:3s;
+-o-animation-duration:3s;
+animation-duration:3s;  
+}
+
+@-webkit-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }   
+    100% {
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }   
+    100% {
+        opacity: 0;
+    }
+}
+
+/*@-moz-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }   25% {
+        opacity: 1;
+    }
+    75% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@-o-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }   25% {
+        opacity: 1;
+    }
+    75% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }   25% {
+        opacity: 1;
+    }
+    75% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}*/
+
+.fadeIn {
+    -webkit-animation-name: fadeIn;
+    -moz-animation-name: fadeIn;
+    -o-animation-name: fadeIn;
+    animation-name: fadeIn;
+}
+
+.fadeOut {
+    -webkit-animation-name: fadeOut;
+    -moz-animation-name: fadeOut;
+    -o-animation-name: fadeOut;
+    animation-name: fadeOut;
+}
+
